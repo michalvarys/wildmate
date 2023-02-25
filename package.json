@@ -1,0 +1,24 @@
+{
+  "name": "nextjs-chakra-ui-template",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "post-update": "yarn upgrade --latest"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "1.6.6",
+    "@emotion/react": "11.0.0",
+    "@emotion/styled": "11.0.0",
+    "@react-spring/parallax": "9.7.0",
+    "@react-spring/web": "9.7.0",
+    "framer-motion": "4.0.0",
+    "next": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "description": ""
+}

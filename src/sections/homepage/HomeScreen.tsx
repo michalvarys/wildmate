@@ -8,10 +8,10 @@ import { MainScreen } from './components/Main';
 import { AboutMate } from './components/AboutMate';
 import { Contact } from './components/Contact';
 
-const fast = { tension: 1200, friction: 40 }
-const slow = { mass: 10, tension: 200, friction: 50 }
-const trans = (x: number, y: number) =>
-  `translate3d(${x}px,${y}px,0) translate3d(-50%,-50%,0)`
+// const fast = { tension: 1200, friction: 40 }
+// const slow = { mass: 10, tension: 200, friction: 50 }
+// const trans = (x: number, y: number) =>
+//   `translate3d(${x}px,${y}px,0) translate3d(-50%,-50%,0)`
 
 const pageStyle: CSSProperties = {
   position: 'absolute',
@@ -29,7 +29,7 @@ const pages: ((props: AnimatedProps<{ style: CSSProperties, transition(page: num
     ...style,
     background: '#f2dd52',
   }}>
-    <Contact  {...rest} />
+    <Contact />
   </animated.div>,
   ({ style, ...rest }) => <animated.div style={{
     ...pageStyle,
@@ -42,7 +42,7 @@ const pages: ((props: AnimatedProps<{ style: CSSProperties, transition(page: num
     ...style,
     background: '#2f2e3c',
   }}>
-    <AboutMate {...rest} />
+    <AboutMate />
   </animated.div>,
 ]
 
@@ -57,16 +57,16 @@ export function HomeScreen({ section, previous, onSectionChange }) {
     leave: { opacity: 0, transform: previous > section ? 'translate3d(50%,0,0)' : 'translate3d(-50%,0,0)' },
   })
 
-  const [trail, api] = useTrail(3, i => ({
-    xy: [0, 0],
-    config: i === 0 ? fast : slow,
-  }))
+  // const [trail, api] = useTrail(3, i => ({
+  //   xy: [0, 0],
+  //   config: i === 0 ? fast : slow,
+  // }))
 
-  const [ref, { left, top }] = useMeasure()
+  // const [ref, { left, top }] = useMeasure()
 
-  const handleMouseMove = e => {
-    api.start({ xy: [e.clientX - left, e.clientY - top] })
-  }
+  // const handleMouseMove = e => {
+  //   api.start({ xy: [e.clientX - left, e.clientY - top] })
+  // }
 
 
   useEffect(() => {

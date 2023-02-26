@@ -1,37 +1,52 @@
-import { Box, Button, chakra, Container, Heading, Stack, Text } from "@chakra-ui/react";
-import { Form } from "./Form"
+import { Box, chakra, Container, HStack, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+// import dynamic from "next/dynamic";
 import Image from "next/image";
-import wildmate from '../assets/wildmate.png';
-import logo from '../assets/logo-sm.png';
+import { Form } from "./Form"
+import { HomeButton } from "./HomeButton";
+import { Particles } from "./Particles";
 
+import bg from '../assets/bg-yellow.png';
+import logo from '../assets/wildmate-logo-black.svg';
+import fbIcon from '../assets/fb-icon.png';
+import igIcon from '../assets/ig-icon.png';
+import twIcon from '../assets/twitter-icon.png';
 
-export function Contact({ transition }) {
+export function Contact() {
   return (
-    <chakra.div>
-      <Button colorScheme="linkedin" variant="link" onClick={() => transition(1)}>zpět</Button>
-      <Container maxW={'3xl'} color="#2C5F2D">
-        <Stack
-          as={Box}
-          textAlign={'center'}
-          spacing={{ base: 8, md: 14 }}
-          w="full"
-        // py={{ base: 20, md: 36 }}
-        >
-          <Heading
-            fontWeight={800}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}>
-            <Image alt="" src={logo} style={{ margin: "auto", marginBottom: 10 }} />
-            Chci vyzkoušet <br />
-            <Image alt="" src={wildmate} height={50} style={{ margin: "auto", marginTop: 10 }} />
-          </Heading>
-          <Text>
-            Qolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibham liber tempor cum soluta nobis eleifend option congue nihil uarta decima et quinta. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.
-          </Text>
+    <chakra.div bgImage={`url(${bg.src})`}
+      bgPosition="center"
+      bgAttachment="fixed"
+      bgSize="cover"
+      h="full"
+      display="flex"
+      justifyContent="center"
+      alignItems="center">
+      <Particles />
 
+      <HomeButton />
+
+      <Container maxW={'container.xl'} color="black">
+        <SimpleGrid spacing={5} minChildWidth="350px">
+          <Stack
+            as={Box}
+            textAlign={'center'}
+            spacing={4}
+            w="full"
+            p={4}
+          >
+            <Image src={logo} alt="" style={{ width: '60%', margin: 'auto' }} />
+            <Text fontWeight="semibold" textAlign="left">
+              Qolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibham liber tempor cum soluta nobis eleifend option congue nihil uarta decima et quinta. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.
+            </Text>
+
+            <HStack gap={10} align="center" justify="center">
+              <Image src={fbIcon} alt="" />
+              <Image src={igIcon} alt="" />
+              <Image src={twIcon} alt="" />
+            </HStack>
+          </Stack>
           <Form />
-
-        </Stack>
+        </SimpleGrid>
       </Container>
     </chakra.div>
   )

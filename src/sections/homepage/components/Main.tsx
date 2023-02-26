@@ -1,6 +1,7 @@
 import { Grid, GridItem, Heading, HStack, VStack } from "@chakra-ui/react";
 import Image from "next/image";
 import { Button, chakra } from '@chakra-ui/react'
+import { HomeButton } from "./HomeButton";
 
 import yellowShape from '../assets/yellow-shape.png';
 import darkShape from '../assets/dark-shape.png';
@@ -8,19 +9,21 @@ import logoGold from '../assets/logo-gold.png';
 import wildmate from '../assets/wildmate.png';
 import starEmpty from '../assets/star-empty.png';
 import starFilled from '../assets/star-filled.png';
-import logo from '../assets/logo-sm.png';
 
 export function MainScreen({ transition }) {
   return (
     <Grid templateColumns="repeat(12, 1fr)" h="full" maxH="1080px" pos="relative">
       <GridItem colSpan={1} pos="relative" display="inline-flex">
-        <chakra.div bgColor="#f2dd52" w={10} />
-        <Image alt="" src={logo} style={{ position: 'absolute', top: '5px', right: '20px', maxWidth: 'full', margin: 'auto' }} />
+        <chakra.div bgColor="yellow.500" w={10} />
+        <HomeButton />
         <Image src={yellowShape} alt="" />
       </GridItem>
 
-      <VStack as={GridItem} spacing={8} colSpan={5} px={20} justify="flex-start" align="flex-start">
-        <Heading size="3xl" color="gray.800" mt={40}>
+      <VStack as={GridItem} spacing={8} colSpan={5} px={20}
+        display="flex"
+        justifyContent="center"
+        alignItems="flex-start">
+        <Heading size="3xl" color="gray.800">
           Lorem ipsum dolor
         </Heading>
 
@@ -50,14 +53,14 @@ export function MainScreen({ transition }) {
         </chakra.div>
 
         <Grid templateColumns="repeat(6, 1fr)" position="relative">
-          <Grid colSpan={1} w="180px" ml="auto">
+          <GridItem as={Grid} colSpan={1} w="180px" ml="auto">
             <Image src={darkShape} alt="" />
-          </Grid>
-          <GridItem colSpan={5} bgColor="#2f2e3c" w="full" />
+          </GridItem>
+          <GridItem colSpan={5} bgColor="brand.500" w="full" />
         </Grid>
       </GridItem>
 
-      <chakra.div pos="absolute" bottom="10%" left="20%" >
+      <chakra.div pos="absolute" bottom="10%" left="20%" zIndex={-1}>
         <Image src={wildmate} alt="" />
       </chakra.div>
     </Grid>

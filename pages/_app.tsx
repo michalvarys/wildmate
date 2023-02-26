@@ -10,23 +10,24 @@ const config: ThemeConfig = {
 const components: ThemeComponents = {
   Input: {
     baseStyle: {
-      bg: "gray.100",
-      color: "green.500",
+      bg: "white",
+      color: "black",
       _placeholder: {
-        color: "green.500",
+        color: "black",
+        bg: "white",
       },
     }
   },
-  FormControl: {
-    baseStyle: {
-      color: 'green.500'
-    }
-  },
-  FormLabel: {
-    baseStyle: {
-      color: 'green.500'
-    }
-  }
+  // FormControl: {
+  //   baseStyle: {
+  //     color: 'black'
+  //   }
+  // },
+  // FormLabel: {
+  //   baseStyle: {
+  //     color: 'black'
+  //   }
+  // }
 };
 
 const theme = extendTheme({
@@ -37,6 +38,13 @@ const theme = extendTheme({
       400: "#3e7a3f",
       500: "#2C5F2D",
       600: "#214c22"
+    },
+    yellow: {
+      500: "#f2dd52",
+      600: "#f4d03f"
+    },
+    brand: {
+      500: '#2f2e3c'
     }
   },
 });

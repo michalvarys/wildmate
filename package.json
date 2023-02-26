@@ -20,7 +20,12 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.2",
     "react-icons": "^4.7.1",
-    "react-use-measure": "^2.1.1"
+    "react-particles": "^2.9.3",
+    "react-use-measure": "^2.1.1",
+    "tsparticles": "^2.9.3",
+    "tsparticles-engine": "^2.9.3",
+    "tsparticles-preset-fire": "^2.9.3",
+    "tsparticles-preset-firefly": "^2.9.3"
   },
   "license": "MIT",
   "keywords": [],

@@ -8,20 +8,27 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "@chakra-ui/react": "1.6.6",
-    "@emotion/react": "11.0.0",
-    "@emotion/styled": "11.0.0",
+    "@chakra-ui/css-reset": "^2.0.11",
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@react-spring/parallax": "9.7.0",
     "@react-spring/web": "9.7.0",
-    "framer-motion": "4.0.0",
+    "framer-motion": "^10.0.0",
     "next": "latest",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.2",
+    "react-icons": "^4.7.1",
+    "react-use-measure": "^2.1.1"
   },
   "license": "MIT",
   "keywords": [],
   "description": "",
   "devDependencies": {
-    "prettier": "^2.8.4"
+    "@types/node": "18.14.1",
+    "@types/react": "18.0.28",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5"
   }
 }

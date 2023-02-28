@@ -1,7 +1,5 @@
 import { ChakraProvider, extendTheme, ThemeConfig, ThemeComponents } from "@chakra-ui/react";
-import chakraTheme from '@chakra-ui/theme'
 
-chakraTheme.components.FormLabel
 const config: ThemeConfig = {
   initialColorMode: "light",
   useSystemColorMode: false,
@@ -10,24 +8,24 @@ const config: ThemeConfig = {
 const components: ThemeComponents = {
   Input: {
     baseStyle: {
-      bg: "white",
+      background: "white",
       color: "black",
       _placeholder: {
         color: "black",
-        bg: "white",
+        background: "white",
       },
+    },
+  },
+  FormControl: {
+    baseStyle: {
+      color: 'black'
     }
   },
-  // FormControl: {
-  //   baseStyle: {
-  //     color: 'black'
-  //   }
-  // },
-  // FormLabel: {
-  //   baseStyle: {
-  //     color: 'black'
-  //   }
-  // }
+  FormLabel: {
+    baseStyle: {
+      color: 'black'
+    }
+  }
 };
 
 const theme = extendTheme({

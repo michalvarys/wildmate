@@ -10,6 +10,7 @@ import logo from '../assets/wildmate-logo-black.svg';
 import fbIcon from '../assets/fb-icon.png';
 import igIcon from '../assets/ig-icon.png';
 import twIcon from '../assets/twitter-icon.png';
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 export function Contact() {
   return (
@@ -21,7 +22,6 @@ export function Contact() {
       display="flex"
       justifyContent="center"
       alignItems="center">
-      <Particles />
 
       <HomeButton />
 
@@ -42,10 +42,12 @@ export function Contact() {
             <HStack gap={10} align="center" justify="center">
               <Image src={fbIcon} alt="" />
               <Image src={igIcon} alt="" />
-              <Image src={twIcon} alt="" />
+              {/* <Image src={twIcon} alt="" /> */}
             </HStack>
           </Stack>
+
           <Form />
+
         </SimpleGrid>
       </Container>
     </chakra.div>

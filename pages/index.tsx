@@ -1,6 +1,7 @@
+import { IParallax } from "@react-spring/parallax";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { HomeScreen } from "../src/sections/homepage/HomeScreen";
+import { useEffect, useRef, useState } from "react";
+import { HomeScreen } from "../src/sections/homepage/HomeScreen2";
 
 const SECTIONS = ['contact', 'home', 'about']
 const SECTION_MAX_INDEX = SECTIONS.length - 1
@@ -16,6 +17,8 @@ export default function Page() {
   const [previous, setPrevPage] = useState(1)
   const router = useRouter();
   const section = getSection(router.query.page as string)
+
+  const transRef = useRef<IParallax>()
 
   const handleSetPage = (page) => {
     if (page >= SECTION_MAX_INDEX) {
@@ -54,5 +57,11 @@ export default function Page() {
     }
   }, [section])
 
-  return <HomeScreen section={section} onSectionChange={handleSetPage} previous={previous} />;
+  useEffect(() => {
+    if (transRef.current) {
+      transRef.current.scrollTo(section)
+    }
+  }, [section])
+
+  return <HomeScreen transRef={transRef} section={section} onSectionChange={handleSetPage} previous={previous} />;
 }

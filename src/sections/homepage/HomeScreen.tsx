@@ -19,6 +19,7 @@ const pageStyle: CSSProperties = {
   height: '100%',
   color: 'white',
   willChange: 'transform, opacity',
+  background: 'white',
   userSelect: 'none'
   // textShadow: '0px 2px 40px #00000020, 0px 2px 5px #00000030',
 }

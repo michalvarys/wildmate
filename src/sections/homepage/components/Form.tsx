@@ -21,7 +21,17 @@ export function Form() {
         <FormControl isRequired>
           <InputGroup>
             <InputLeftElement children={<BsPerson />} />
-            <Input type="text" name="name" placeholder="Vaše jméno" border={0} variant="filled" />
+            <Input
+              type="text"
+              name="name"
+              placeholder="Vaše jméno"
+              color="black"
+              background="white"
+              _placeholder={{
+                color: 'gray.300',
+                background: 'white',
+              }}
+              border={0} />
           </InputGroup>
         </FormControl>
 
@@ -32,8 +42,13 @@ export function Form() {
               type="email"
               name="email"
               placeholder="Emailová adresa"
-              border={0}
-              variant="filled" />
+              color="black"
+              background="white"
+              _placeholder={{
+                color: 'gray.300',
+                background: 'white',
+              }}
+              border={0} />
           </InputGroup>
         </FormControl>
 
@@ -43,8 +58,9 @@ export function Form() {
             placeholder="Zpráva"
             rows={6}
             resize="none"
+            color="black"
+            background="white"
             border={0}
-            variant="filled"
           />
         </FormControl>
 

@@ -1,7 +1,7 @@
 import { IParallax } from "@react-spring/parallax";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
-import { HomeScreen } from "../src/sections/homepage/HomeScreen2";
+import { useEffect, useRef } from "react";
+import { HomeScreen } from "../src/sections/homepage/HomeScreen";
 
 const SECTIONS = ['contact', 'home', 'about']
 const SECTION_MAX_INDEX = SECTIONS.length - 1
@@ -14,11 +14,14 @@ const getSection = (name = 'home') => {
 }
 
 export default function Page() {
-  const [previous, setPrevPage] = useState(1)
   const router = useRouter();
   const section = getSection(router.query.page as string)
-
   const transRef = useRef<IParallax>()
+
+  const adjustSection = () => {
+    const page = transRef.current?.current
+    router.push({ query: { page: SECTIONS[page] } })
+  }
 
   const handleSetPage = (page) => {
     if (page >= SECTION_MAX_INDEX) {
@@ -27,8 +30,10 @@ export default function Page() {
       page = 0
     }
 
-    setPrevPage(section)
-    router.push({ query: { page: SECTIONS[page] } })
+    if (transRef.current.offset !== page) {
+      transRef.current.scrollTo(page)
+      router.push({ query: { page: SECTIONS[page] } })
+    }
   }
 
   useEffect(() => {
@@ -40,12 +45,21 @@ export default function Page() {
       }
     }
 
+    let timer = null
     function onWheel(e) {
-      if (e.deltaY > 0) {
-        handleSetPage(section + 1)
-      } else if (e.deltaY < 0) {
-        handleSetPage(section - 1)
+      if (timer) {
+        clearTimeout(timer)
       }
+
+      timer = setTimeout(() => {
+        let newSection = section + (e.deltaY > 0 ? 1 : -1)
+        newSection = newSection > SECTION_MAX_INDEX ? SECTION_MAX_INDEX : newSection < 0 ? 0 : newSection
+        console.log(newSection, section)
+        if (newSection !== section) {
+          handleSetPage(newSection)
+        }
+        clearTimeout(timer)
+      }, 300)
     }
 
     window.addEventListener('keydown', onKeyDown)
@@ -58,10 +72,19 @@ export default function Page() {
   }, [section])
 
   useEffect(() => {
-    if (transRef.current) {
-      transRef.current.scrollTo(section)
+    let timer = null
+    if (timer) {
+      clearTimeout(timer)
     }
+
+    timer = setTimeout(() => {
+      transRef.current.scrollTo(section)
+      clearTimeout(timer)
+    }, 300)
+    // if (transRef.current.offset !== section) {
+    //   transRef.current.scrollTo(section)
+    // }
   }, [section])
 
-  return <HomeScreen transRef={transRef} section={section} onSectionChange={handleSetPage} previous={previous} />;
+  return <HomeScreen transRef={transRef} onSectionChange={handleSetPage} />;
 }

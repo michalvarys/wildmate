@@ -1,4 +1,4 @@
-import { Grid, GridItem, Heading, HStack, VStack } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Heading, HStack, VStack } from "@chakra-ui/react";
 import Image from "next/image";
 import { Button, chakra } from '@chakra-ui/react'
 import { HomeButton } from "./HomeButton";
@@ -10,29 +10,34 @@ import wildmate from '../assets/wildmate.png';
 import starEmpty from '../assets/star-empty.png';
 import starFilled from '../assets/star-filled.png';
 import { ParallaxLayer } from "@react-spring/parallax";
+import { colors } from "../../../theme";
 
 export function MainScreen({ transition }) {
   return (
     <>
-      <ParallaxLayer horizontal offset={0.8} speed={0.2} style={{ background: '#f2dd52', width: '15%', height: '100%', zIndex: -1 }} />
+      <ParallaxLayer horizontal offset={0.3} speed={0.2} style={{ background: colors.yellow[500], width: '32%', height: '100%', zIndex: -1 }} />
 
-      <ParallaxLayer horizontal offset={1} speed={0.2}>
-        <HomeButton />
+      <ParallaxLayer horizontal offset={1.02} speed={0.2}>
         <Image src={yellowShape} alt="" />
       </ParallaxLayer>
 
+      <ParallaxLayer horizontal offset={1} speed={0.8}>
+        <HomeButton />
+      </ParallaxLayer>
 
-      <ParallaxLayer offset={1} speed={0.4} style={{ position: 'relative', display: "grid", flexDirection: 'row', width: '100%', gridTemplateColumns: "repeat(12, 1fr)" }}>
+      <ParallaxLayer offset={1.5} speed={1} horizontal style={{ zIndex: 9 }}>
+        <chakra.div pos="absolute" top="30%" left={-20} zIndex={9}>
+          <Image src={logoGold} alt="" />
+        </chakra.div>
+      </ParallaxLayer>
 
+      <ParallaxLayer offset={1} speed={1.2} style={{ position: 'relative', display: "grid", flexDirection: 'row', width: '100%', gridTemplateColumns: "repeat(12, 1fr)" }}>
         <GridItem colStart={3} colSpan={6} pos="relative" zIndex={9}>
-          <chakra.div pos="absolute" top="30%" left={-20} zIndex={9}>
-            <Image src={logoGold} alt="" />
-          </chakra.div>
-
           <Grid templateColumns="repeat(6, 1fr)" position="relative">
             <GridItem as={Grid} colSpan={1} w="180px" ml="auto">
               <Image src={darkShape} alt="" />
             </GridItem>
+
             <GridItem colSpan={5} bgColor="brand.500" w="full" />
           </Grid>
         </GridItem>
